@@ -4,6 +4,7 @@ import com.productoCRUD.demo.models.Producto;
 import com.productoCRUD.demo.repository.ProductoRepository;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @Service
 public class ProductoService implements  IProductoService{
 /*Aca vamos a crear la logica necesaria para poder cargar los datos a la base de datos */
+    @Autowired
     private  ProductoRepository prdrepo;
 
     @SneakyThrows

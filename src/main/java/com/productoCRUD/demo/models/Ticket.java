@@ -7,7 +7,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.core.SpringVersion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
+@Table(name = "ticket")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,19 +21,11 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTicket;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "venta_id")
     private Venta venta;
 
 
-    // Método para mostrar información del ticket
-    public String mostrarTicket() {
-        String id = "ID del Ticket: " + getIdTicket();
-        String descVenta = "Descripción de la Venta: " + venta.getDescpVenta();
-        String fechaVenta = "Fecha de la Venta: " + venta.getFechaVenta();
-        String nombreCliente = "Nombre del Cliente: " + venta.getCliente().getNameCliente();
-        String dniCliente = "DNI del Cliente: " + venta.getCliente().getDniCliente();
-        return String.join("\n", id, descVenta, fechaVenta, nombreCliente, dniCliente);
-    }
 }
 
 

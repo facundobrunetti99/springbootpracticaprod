@@ -10,10 +10,10 @@ import java.util.List;
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket,Long> {
 
-    @Query("SELECT DISTINCT v.nameprd FROM Venta.productos v")
+    @Query("SELECT DISTINCT p.nameprd FROM Venta v JOIN v.productos p")
     List<String> findDistinctnameprd();
 
-    @Query("SELECT DISTINCT v.nameCliente FROM Venta.cliente v")
+    @Query("SELECT DISTINCT c.nameCliente FROM Venta v JOIN v.cliente c")
     List<String> findDistinctClienteName();
 
 }

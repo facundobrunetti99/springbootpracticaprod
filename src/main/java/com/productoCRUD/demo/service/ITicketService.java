@@ -9,4 +9,5 @@ public interface ITicketService {
      Ticket addTicket(Long idTicket);
 
     List<String> getAllNameProducts();
+    List<String> getAllClienteName();
 }

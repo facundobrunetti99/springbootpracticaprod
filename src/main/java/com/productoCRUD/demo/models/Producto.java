@@ -22,8 +22,10 @@ public class Producto {
     private double priceprd;
     private int stockprd;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore /*Este sirver para que cuando muestre los productos no se muestren todos*/
+
+    @ManyToOne
+    @JoinColumn(name = "venta_id_venta")  // Esto especifica la clave foránea
+    @JsonIgnore
     private Venta venta;
 
 }

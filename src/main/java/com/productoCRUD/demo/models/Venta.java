@@ -9,6 +9,7 @@ import lombok.Setter;
 import java.util.*;
 
 @Entity
+@Table(name = "venta")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -21,9 +22,10 @@ public class Venta {
     private Date fechaVenta;
     @OneToOne(fetch = FetchType.EAGER,cascade =CascadeType.ALL )
     private Cliente cliente;
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy ="venta" ,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Producto> productos = new ArrayList<>();
-
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "venta")
+    private Ticket ticket;
 
 
 }
