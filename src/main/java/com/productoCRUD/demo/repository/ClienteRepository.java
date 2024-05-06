@@ -12,4 +12,5 @@ import java.util.List;
 public interface ClienteRepository extends JpaRepository<Cliente,Long> {
     @Query("SELECT DISTINCT c.nameCliente FROM Cliente c")
     List<String> getAllNameClientes();
+
 }

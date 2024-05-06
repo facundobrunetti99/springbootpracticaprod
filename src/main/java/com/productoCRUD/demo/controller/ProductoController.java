@@ -12,6 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -41,4 +44,17 @@ public class ProductoController {
     public List <String> showProductName(){
             return prodservice.getNameProducts();
     }
+
+    @DeleteMapping("/delete/prod")
+    public String DeleteProduct(@RequestParam("idprod") Long idprd){
+       return prodservice.deleteProductDB(idprd);
+
+    }
+
+    @GetMapping("/show/prod/delete-search")
+    public List<Producto> searchProd(@RequestParam String name) {
+        return prodservice.findAllSearchProductos(name);
+    }
+
+    
 }
