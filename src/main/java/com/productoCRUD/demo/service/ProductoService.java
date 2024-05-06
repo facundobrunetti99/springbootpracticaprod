@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +23,6 @@ public class ProductoService implements  IProductoService{
         producto.setPriceprd(priceprd);
         producto.setNameprd(nameprd);
         producto.setStockprd(stockprd);
-        
         return prdrepo.save(producto);
     }
 
@@ -48,6 +46,22 @@ public class ProductoService implements  IProductoService{
     public List<Producto> findAllSearchProductos(String name) {
         return prdrepo.findAllSearchProductos(name);
     }
+
+    @Override
+    public List<Producto> getProducts() {
+        return prdrepo.findAllProductos();
+    }
+
+    @Override
+    public Producto modificarProd(Long id, String name) {
+     Optional<Producto> modificarProda= prdrepo.findById(id);
+     Producto productoModificar=modificarProda.get();
+     productoModificar.setNameprd(name);
+    prdrepo.save(productoModificar);
+
+        return productoModificar;
+    }
+    
 
 
     

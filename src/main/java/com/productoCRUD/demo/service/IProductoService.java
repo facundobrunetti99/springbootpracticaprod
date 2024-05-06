@@ -14,5 +14,7 @@ public interface IProductoService {
     String deleteProductDB(Long idprd);
     List<String> getNameProducts();
     List<Producto> findAllSearchProductos(String name);
+    List<Producto> getProducts();
+    Producto modificarProd(Long id, String name);
 
 }
